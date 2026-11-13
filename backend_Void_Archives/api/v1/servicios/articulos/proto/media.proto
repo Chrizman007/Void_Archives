@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+option java_package = "com.voidarchives.network.grpc";
+option java_multiple_files = true;
+
+package media;
+
+service MediaService {
+  rpc SubirImagen (stream ImagenRequest) returns (ImagenResponse);
+  rpc DescargarImagen (DescargaRequest) returns (stream DescargaResponse);
+}
+
+message ImagenRequest {
+  string articuloId = 1;
+  bytes chunk = 2;
+  string nombreArchivo = 3;
+}
+
+message ImagenResponse {
+  bool exito = 1;
+  string mensaje = 2;
+  string urlImagen = 3;
+}
+
+message DescargaRequest {
+  string nombreArchivo = 1;
+}
+
+message DescargaResponse {
+  bytes chunk = 1;
+}

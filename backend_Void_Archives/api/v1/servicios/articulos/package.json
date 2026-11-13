@@ -1,0 +1,32 @@
+{
+  "name": "void-archives-articulos-service",
+  "version": "1.0.0",
+  "description": "Void Archives - Article microservice",
+  "main": "src/negocios/ArticuloService.js",
+  "scripts": {
+    "start": "node src/negocios/ArticuloService.js",
+    "dev": "node src/negocios/ArticuloService.js"
+  },
+  "keywords": [
+    "void-archives",
+    "wiki",
+    "articles",
+    "microservice",
+    "mongodb",
+    "rest-api"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@grpc/grpc-js": "^1.14.4",
+    "@grpc/proto-loader": "^0.8.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.3",
+    "mongodb": "^6.3.0",
+    "mongoose": "^8.0.3",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1"
+  }
+}
