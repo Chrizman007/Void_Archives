@@ -1,0 +1,31 @@
+# Dependencias Node.js
+**/node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Archivos de compilación y caché de Android / Gradle
+**/.gradle/
+**/build/
+**/app/build/
+**/captures/
+**/.externalNativeBuild/
+**/.cxx/
+**/local.properties
+*.apk
+*.aab
+*.ap_
+*.dex
+
+# Configuración de IDEs
+**/.idea/
+**/.vscode/
+*.iml
+*.iws
+*.ipr
+
+# Variables de entorno sensibles y archivos temporales
+**/.env
+**/test_probe.txt
+.DS_Store
+Thumbs.db
