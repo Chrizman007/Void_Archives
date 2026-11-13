@@ -1,0 +1,29 @@
+{
+  "name": "void-archives-api-gateway",
+  "version": "1.0.0",
+  "description": "Void Archives - API Gateway for microservices architecture",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "node app.js"
+  },
+  "keywords": [
+    "void-archives",
+    "wiki",
+    "api-gateway",
+    "microservices",
+    "mongodb",
+    "rest-api"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.6",
+    "dotenv": "^16.6.1",
+    "express": "^4.22.2",
+    "http-proxy-middleware": "^2.0.6",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^8.23.1"
+  }
+}

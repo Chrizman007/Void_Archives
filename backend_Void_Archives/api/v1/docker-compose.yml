@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  articulos:
+    build:
+      context: ./servicios/articulos
+    container_name: voidarchives_articulos
+    env_file:
+      - ./servicios/articulos/.env
+    ports:
+      - '3001:3001'
+      - '50051:50051'
+    volumes:
+      - ./servicios/articulos/public/imagenes:/app/public/imagenes
+    restart: unless-stopped
+
+  usuarios:
+    build:
+      context: ./servicios/usuarios
+    container_name: voidarchives_usuarios
+    env_file:
+      - ./servicios/usuarios/.env
+    ports:
+      - '3002:3002'
+    restart: unless-stopped
+
+  nginx:
+    image: nginx:latest
+    container_name: voidarchives_gateway
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/conf.d:/etc/nginx/conf.d:ro
+    depends_on:
+      - articulos
+      - usuarios
+    restart: unless-stopped
+
+  comentarios:
+    build:
+      context: ./servicios/comentarios
+    container_name: voidarchives_comentarios
+    env_file:
+      - ./servicios/comentarios/.env
+    ports:
+      - '3004:3004'
+    depends_on:
+      - articulos
+    restart: unless-stopped
