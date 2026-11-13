@@ -1,0 +1,14 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Base.Theme.VoidArchivesMobil" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/acento_alma</item>
+        <item name="colorPrimaryVariant">@color/boton_fondo</item>
+        <item name="colorOnPrimary">@color/texto_hueso</item>
+        <item name="colorSecondary">@color/acento_oro</item>
+        <item name="colorOnSecondary">@color/fondo_abisal</item>
+        <item name="android:statusBarColor">@color/fondo_abisal</item>
+        <item name="android:navigationBarColor">@color/fondo_abisal</item>
+        <item name="android:windowBackground">@color/fondo_abisal</item>
+    </style>
+
+    <style name="Theme.VoidArchivesMobil" parent="Base.Theme.VoidArchivesMobil" />
+</resources>

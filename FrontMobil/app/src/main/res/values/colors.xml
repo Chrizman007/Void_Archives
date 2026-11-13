@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- Paleta VOID ARCHIVES / Hallownest (Void, Stone, Soul & Gold) -->
+    <color name="fondo_abisal">#0B0D13</color>
+    <color name="fondo_lateral">#07080C</color>
+    <color name="panel_secundario">#141824</color>
+    <color name="fondo_input">#0E111A</color>
+    <color name="borde_piedra">#2D3548</color>
+    <color name="texto_hueso">#E6E8EE</color>
+    <color name="texto_gris">#8C93A8</color>
+    <color name="acento_alma">#8AB4F8</color>
+    <color name="acento_oro">#E0C068</color>
+    <color name="boton_fondo">#2B3B5E</color>
+    <color name="boton_hover">#3C5587</color>
+    <color name="acento_rojo">#E65F5F</color>
+    <color name="acento_verde">#6EEBC8</color>
+</resources>

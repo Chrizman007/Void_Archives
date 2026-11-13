@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">VOID ARCHIVES</string>
+    <string name="login_titulo">HALLOWNEST</string>
+    <string name="login_subtitulo">V O I D   A R C H I V E S</string>
+    <string name="correo_label">CORREO DEL CABALLERO:</string>
+    <string name="password_label">CONTRASEÑA DEL SELLO:</string>
+    <string name="btn_ingresar">INGRESAR A HALLOWNEST</string>
+    <string name="link_registro">¿Primera vez aquí? Forjar nuevo sello</string>
+    <string name="buscar_hint">Consultar el Diario del Cazador…</string>
+    <string name="sin_articulos">No se encontraron crónicas inscritas en el Diario.</string>
+</resources>

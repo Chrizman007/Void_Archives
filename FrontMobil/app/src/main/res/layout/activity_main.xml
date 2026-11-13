@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fondo_abisal">
+
+    <!-- Barra Superior (Header) -->
+    <LinearLayout
+        android:id="@+id/headerMain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/fondo_lateral"
+        android:orientation="vertical"
+        android:paddingStart="16dp"
+        android:paddingTop="14dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="12dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:letterSpacing="0.1"
+                    android:text="DIARIO DE HALLOWNEST"
+                    android:textColor="@color/texto_hueso"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvUsuarioHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="Vasija: Cazador [LECTOR]"
+                    android:textColor="@color/acento_alma"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnRefrescar"
+                android:layout_width="40dp"
+                android:layout_height="38dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/bg_input_piedra"
+                android:padding="0dp"
+                android:text="↻"
+                android:textColor="@color/acento_alma"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:backgroundTint="@null" />
+
+            <Button
+                android:id="@+id/btnCerrarSesion"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:background="@drawable/bg_input_piedra"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:text="Salir"
+                android:textColor="@color/acento_rojo"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:backgroundTint="@null" />
+        </LinearLayout>
+
+        <!-- Buscador -->
+        <EditText
+            android:id="@+id/etBuscador"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_input_piedra"
+            android:hint="@string/buscar_hint"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:paddingStart="14dp"
+            android:paddingEnd="14dp"
+            android:textColor="@color/texto_hueso"
+            android:textColorHint="@color/texto_gris"
+            android:textSize="13sp" />
+
+        <!-- Filtros de Categorías y Vistas (igual que la barra lateral de escritorio) -->
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:id="@+id/layoutFiltrosCategorias"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnFiltroTodos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="34dp"
+                    android:layout_marginEnd="6dp"
+                    android:background="@drawable/bg_boton_primario"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:text="Diario Completo"
+                    android:textAllCaps="false"
+                    android:textColor="@color/texto_hueso"
+                    android:textSize="12sp"
+                    app:backgroundTint="@null" />
+
+                <Button
+                    android:id="@+id/btnFiltroDestacados"
+                    android:layout_width="wrap_content"
+                    android:layout_height="34dp"
+                    android:layout_marginEnd="6dp"
+                    android:background="@drawable/bg_input_piedra"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:text="★ Crónicas Mayores"
+                    android:textAllCaps="false"
+                    android:textColor="@color/acento_oro"
+                    android:textSize="12sp"
+                    app:backgroundTint="@null" />
+
+                <Button
+                    android:id="@+id/btnFiltroLore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="34dp"
+                    android:layout_marginEnd="6dp"
+                    android:background="@drawable/bg_input_piedra"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:text="✧ Lore"
+                    android:textAllCaps="false"
+                    android:textColor="@color/texto_gris"
+                    android:textSize="12sp"
+                    app:backgroundTint="@null" />
+
+                <Button
+                    android:id="@+id/btnFiltroItems"
+                    android:layout_width="wrap_content"
+                    android:layout_height="34dp"
+                    android:layout_marginEnd="6dp"
+                    android:background="@drawable/bg_input_piedra"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:text="✧ Items"
+                    android:textAllCaps="false"
+                    android:textColor="@color/texto_gris"
+                    android:textSize="12sp"
+                    app:backgroundTint="@null" />
+
+                <Button
+                    android:id="@+id/btnFiltroEnemigos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="34dp"
+                    android:layout_marginEnd="6dp"
+                    android:background="@drawable/bg_input_piedra"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:text="✧ Enemigos"
+                    android:textAllCaps="false"
+                    android:textColor="@color/texto_gris"
+                    android:textSize="12sp"
+                    app:backgroundTint="@null" />
+
+                <Button
+                    android:id="@+id/btnFiltroUbicaciones"
+                    android:layout_width="wrap_content"
+                    android:layout_height="34dp"
+                    android:layout_marginEnd="6dp"
+                    android:background="@drawable/bg_input_piedra"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:text="✧ Ubicaciones"
+                    android:textAllCaps="false"
+                    android:textColor="@color/texto_gris"
+                    android:textSize="12sp"
+                    app:backgroundTint="@null" />
+
+                <Button
+                    android:id="@+id/btnFiltroPersonajes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="34dp"
+                    android:background="@drawable/bg_input_piedra"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:text="✧ Personajes"
+                    android:textAllCaps="false"
+                    android:textColor="@color/texto_gris"
+                    android:textSize="12sp"
+                    app:backgroundTint="@null" />
+            </LinearLayout>
+        </HorizontalScrollView>
+    </LinearLayout>
+
+    <!-- Separador -->
+    <View
+        android:id="@+id/dividerMain"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/borde_piedra"
+        app:layout_constraintTop_toBottomOf="@+id/headerMain" />
+
+    <!-- Lista de Artículos -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvArticulos"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:paddingTop="8dp"
+        android:paddingBottom="88dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dividerMain" />
+
+    <!-- Estado Vacío / Cargando -->
+    <ProgressBar
+        android:id="@+id/progressMain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminateTint="@color/acento_alma"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dividerMain" />
+
+    <TextView
+        android:id="@+id/tvEmptyState"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="24dp"
+        android:text="@string/sin_articulos"
+        android:textAlignment="center"
+        android:textColor="@color/texto_gris"
+        android:textSize="14sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dividerMain" />
+
+    <!-- Botón Flotante para Crear Crónica -->
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/fabNuevoArticulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:backgroundTint="@color/boton_fondo"
+        android:text="+ Grabar Crónica"
+        android:textColor="@color/texto_hueso"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:strokeColor="@color/acento_alma"
+        app:strokeWidth="1dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
