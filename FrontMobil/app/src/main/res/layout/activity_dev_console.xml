@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dev_fondo_principal">
+
+    <!-- Panel Superior de Configuración y Credenciales -->
+    <LinearLayout
+        android:id="@+id/headerDevConsole"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/fondo_lateral"
+        android:orientation="vertical"
+        android:padding="14dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- Cabecera: Volver y Título -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnVolverDev"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:background="@drawable/bg_input_piedra"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:text="← Diario"
+                android:textAllCaps="false"
+                android:textColor="@color/texto_hueso"
+                android:textSize="12sp"
+                app:backgroundTint="@null" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="FOCO DEL VACÍO (API)"
+                    android:textColor="@color/acento_verde"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Terminal de Diagnóstico de Red - Protocolo gRPC/REST"
+                    android:textColor="@color/texto_gris"
+                    android:textSize="10sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Etiqueta y Caja de Token JWT Activo -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="TOKEN JWT ACTIVO (CREDENCIALES DE DESARROLLADOR):"
+                android:textColor="@color/white"
+                android:textSize="10sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/btnCopiarTokenDev"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="8dp"
+                android:paddingEnd="4dp"
+                android:text="[Copiar JWT]"
+                android:textColor="@color/acento_alma"
+                android:textSize="10sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:background="@color/dev_panel_secundario"
+            android:padding="8dp"
+            android:scrollbars="none">
+
+            <TextView
+                android:id="@+id/tvDevTokenJwt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="monospace"
+                android:singleLine="true"
+                android:text="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+                android:textColor="@color/texto_gris"
+                android:textSize="11sp" />
+        </HorizontalScrollView>
+
+        <!-- Barra de Petición: BASE_URL + Endpoint + Botón CONSUMIR API -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvDevBaseUrl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="6dp"
+                android:fontFamily="monospace"
+                android:text="http://127.0.0.1:3000/"
+                android:textColor="@color/dev_acento_naranja"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/etDevEndpoint"
+                android:layout_width="0dp"
+                android:layout_height="38dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_input_piedra"
+                android:fontFamily="monospace"
+                android:hint="articulos"
+                android:importantForAutofill="no"
+                android:inputType="textUri"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:singleLine="true"
+                android:text="articulos"
+                android:textColor="@color/white"
+                android:textColorHint="@color/texto_gris"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btnDevConsumir"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:backgroundTint="@color/dev_acento_naranja"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:text="CONSUMIR API"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Accesos Rápidos de Diagnóstico -->
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnQuickArticulos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="6dp"
+                    android:background="@drawable/bg_input_piedra"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:text="GET /articulos"
+                    android:textAllCaps="false"
+                    android:textColor="@color/acento_verde"
+                    android:textSize="10sp"
+                    app:backgroundTint="@null" />
+
+                <Button
+                    android:id="@+id/btnQuickError404"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="6dp"
+                    android:background="@drawable/bg_input_piedra"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:text="Simular Error (ID inválido)"
+                    android:textAllCaps="false"
+                    android:textColor="@color/dev_acento_naranja"
+                    android:textSize="10sp"
+                    app:backgroundTint="@null" />
+
+                <Button
+                    android:id="@+id/btnQuickNoEncontrado"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="6dp"
+                    android:background="@drawable/bg_input_piedra"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:text="Simular 404 (No encontrado)"
+                    android:textAllCaps="false"
+                    android:textColor="@color/acento_rojo"
+                    android:textSize="10sp"
+                    app:backgroundTint="@null" />
+
+                <Button
+                    android:id="@+id/btnQuickLimpiar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:background="@drawable/bg_input_piedra"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:text="Limpiar Terminal"
+                    android:textAllCaps="false"
+                    android:textColor="@color/texto_gris"
+                    android:textSize="10sp"
+                    app:backgroundTint="@null" />
+            </LinearLayout>
+        </HorizontalScrollView>
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/dividerDev"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/borde_piedra"
+        app:layout_constraintTop_toBottomOf="@+id/headerDevConsole" />
+
+    <!-- Consola Negra de Salida JSON -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="12dp"
+        android:background="@color/black"
+        android:fillViewport="true"
+        android:padding="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dividerDev">
+
+        <TextView
+            android:id="@+id/tvDevJsonOutput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="monospace"
+            android:lineSpacingExtra="3dp"
+            android:text="// Presiona 'CONSUMIR API' para interceptar la respuesta REST de Node.js..."
+            android:textColor="@color/dev_texto_terminal"
+            android:textIsSelectable="true"
+            android:textSize="12sp" />
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

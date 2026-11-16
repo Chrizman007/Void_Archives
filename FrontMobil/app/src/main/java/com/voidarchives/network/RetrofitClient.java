@@ -33,6 +33,7 @@ public class RetrofitClient {
     public static final String BASE_URL = esEmulador() ? IP_EMULADOR : IP_PC_PRINCIPAL;
     private static volatile String hostActivo = esEmulador() ? "10.0.2.2" : HOST_USB;
     private static Retrofit retrofit = null;
+    private static OkHttpClient okHttpClientInstance = null;
 
     private static boolean esEmulador() {
         return Build.FINGERPRINT.startsWith("generic")
@@ -47,8 +48,8 @@ public class RetrofitClient {
                 || Build.PRODUCT.contains("sdk");
     }
 
-    public static Retrofit getClient() {
-        if (retrofit == null) {
+    public static synchronized OkHttpClient getOkHttpClient() {
+        if (okHttpClientInstance == null) {
             Interceptor failoverInterceptor = chain -> {
                 Request original = chain.request();
                 if (esEmulador()) {
@@ -80,20 +81,29 @@ public class RetrofitClient {
                 return chain.proceed(original);
             };
 
-            OkHttpClient okHttpClient = new OkHttpClient.Builder()
+            okHttpClientInstance = new OkHttpClient.Builder()
                     .addInterceptor(failoverInterceptor)
                     .connectTimeout(5, TimeUnit.SECONDS)
                     .readTimeout(15, TimeUnit.SECONDS)
                     .writeTimeout(15, TimeUnit.SECONDS)
                     .build();
+        }
+        return okHttpClientInstance;
+    }
 
+    public static synchronized Retrofit getClient() {
+        if (retrofit == null) {
             retrofit = new Retrofit.Builder()
                     .baseUrl(BASE_URL)
-                    .client(okHttpClient)
+                    .client(getOkHttpClient())
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
         }
         return retrofit;
+    }
+
+    public static String getBaseUrlActiva() {
+        return "http://" + hostActivo + ":3000/";
     }
 
     /**
