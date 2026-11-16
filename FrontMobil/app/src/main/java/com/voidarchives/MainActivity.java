@@ -7,6 +7,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,7 +25,10 @@ import com.voidarchives.model.ArticulosListResponse;
 import com.voidarchives.network.ArticuloClient;
 import com.voidarchives.network.RetrofitClient;
 import com.voidarchives.util.SessionManager;
+import com.voidarchives.util.WindowInsetsHelper;
+import com.voidarchives.view.AdminDashboardActivity;
 import com.voidarchives.view.DetalleArticuloActivity;
+import com.voidarchives.view.DevConsoleActivity;
 import com.voidarchives.view.LoginActivity;
 import com.voidarchives.view.NuevoArticuloActivity;
 
@@ -46,14 +50,19 @@ public class MainActivity extends AppCompatActivity {
     private TextView tvEmptyState;
     private ExtendedFloatingActionButton fabNuevoArticulo;
 
+    private LinearLayout layoutPanelPrivilegios;
+    private Button btnCamaraDelRey;
+    private Button btnFocoDelVacio;
+
     private Button btnFiltroTodos;
     private Button btnFiltroDestacados;
+    private Button btnFiltroRecientes;
     private Button btnFiltroLore;
     private Button btnFiltroItems;
     private Button btnFiltroEnemigos;
     private Button btnFiltroUbicaciones;
     private Button btnFiltroPersonajes;
-    private List<Button> botonesFiltro = new ArrayList<>();
+    private final List<Button> botonesFiltro = new ArrayList<>();
 
     private ArticuloAdapter adapter;
     private List<ArticuloDTO> listaArticulosCache = new ArrayList<>();
@@ -70,8 +79,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
         setContentView(R.layout.activity_main);
+        WindowInsetsHelper.aplicarMargenesSeguros(this);
 
         inicializarVistas();
+        configurarPrivilegiosPorRol();
         configurarFiltros();
         configurarBuscador();
     }
@@ -91,6 +102,10 @@ public class MainActivity extends AppCompatActivity {
         progressMain = findViewById(R.id.progressMain);
         tvEmptyState = findViewById(R.id.tvEmptyState);
         fabNuevoArticulo = findViewById(R.id.fabNuevoArticulo);
+
+        layoutPanelPrivilegios = findViewById(R.id.layoutPanelPrivilegios);
+        btnCamaraDelRey = findViewById(R.id.btnCamaraDelRey);
+        btnFocoDelVacio = findViewById(R.id.btnFocoDelVacio);
 
         Button btnRefrescar = findViewById(R.id.btnRefrescar);
         Button btnCerrarSesion = findViewById(R.id.btnCerrarSesion);
@@ -114,11 +129,41 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, NuevoArticuloActivity.class);
             startActivity(intent);
         });
+
+        btnCamaraDelRey.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, AdminDashboardActivity.class);
+            startActivity(intent);
+        });
+
+        btnFocoDelVacio.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, DevConsoleActivity.class);
+            startActivity(intent);
+        });
+    }
+
+    private void configurarPrivilegiosPorRol() {
+        String rol = sessionManager.getRol() != null ? sessionManager.getRol().toLowerCase() : "lector";
+
+        if ("administrador".equals(rol)) {
+            layoutPanelPrivilegios.setVisibility(View.VISIBLE);
+            btnCamaraDelRey.setVisibility(View.VISIBLE);
+            btnFocoDelVacio.setVisibility(View.GONE);
+            fabNuevoArticulo.setVisibility(View.VISIBLE);
+        } else if ("desarrollador".equals(rol)) {
+            layoutPanelPrivilegios.setVisibility(View.VISIBLE);
+            btnCamaraDelRey.setVisibility(View.GONE);
+            btnFocoDelVacio.setVisibility(View.VISIBLE);
+            fabNuevoArticulo.setVisibility(View.GONE);
+        } else {
+            layoutPanelPrivilegios.setVisibility(View.GONE);
+            fabNuevoArticulo.setVisibility(View.GONE);
+        }
     }
 
     private void configurarFiltros() {
         btnFiltroTodos = findViewById(R.id.btnFiltroTodos);
         btnFiltroDestacados = findViewById(R.id.btnFiltroDestacados);
+        btnFiltroRecientes = findViewById(R.id.btnFiltroRecientes);
         btnFiltroLore = findViewById(R.id.btnFiltroLore);
         btnFiltroItems = findViewById(R.id.btnFiltroItems);
         btnFiltroEnemigos = findViewById(R.id.btnFiltroEnemigos);
@@ -127,11 +172,12 @@ public class MainActivity extends AppCompatActivity {
 
         botonesFiltro.clear();
         Collections.addAll(botonesFiltro,
-                btnFiltroTodos, btnFiltroDestacados, btnFiltroLore,
+                btnFiltroTodos, btnFiltroDestacados, btnFiltroRecientes, btnFiltroLore,
                 btnFiltroItems, btnFiltroEnemigos, btnFiltroUbicaciones, btnFiltroPersonajes);
 
         btnFiltroTodos.setOnClickListener(v -> seleccionarFiltro("TODOS", btnFiltroTodos));
         btnFiltroDestacados.setOnClickListener(v -> seleccionarFiltro("DESTACADOS", btnFiltroDestacados));
+        btnFiltroRecientes.setOnClickListener(v -> seleccionarFiltro("RECIENTES", btnFiltroRecientes));
         btnFiltroLore.setOnClickListener(v -> seleccionarFiltro("Lore", btnFiltroLore));
         btnFiltroItems.setOnClickListener(v -> seleccionarFiltro("Items", btnFiltroItems));
         btnFiltroEnemigos.setOnClickListener(v -> seleccionarFiltro("Enemigos", btnFiltroEnemigos));
@@ -213,7 +259,9 @@ public class MainActivity extends AppCompatActivity {
             }
 
             // Filtro por categoría
-            if (!"TODOS".equals(categoriaSeleccionada) && !"DESTACADOS".equals(categoriaSeleccionada)) {
+            if (!"TODOS".equals(categoriaSeleccionada)
+                    && !"DESTACADOS".equals(categoriaSeleccionada)
+                    && !"RECIENTES".equals(categoriaSeleccionada)) {
                 if (art.getCategoria() == null || !art.getCategoria().equalsIgnoreCase(categoriaSeleccionada)) {
                     continue;
                 }
@@ -234,6 +282,11 @@ public class MainActivity extends AppCompatActivity {
 
         if ("DESTACADOS".equals(categoriaSeleccionada)) {
             Collections.sort(resultado, (a, b) -> Integer.compare(b.getVistas(), a.getVistas()));
+        } else if ("RECIENTES".equals(categoriaSeleccionada)) {
+            Collections.sort(resultado, (a, b) -> {
+                if (a.getFechaCreacion() == null || b.getFechaCreacion() == null) return 0;
+                return b.getFechaCreacion().compareTo(a.getFechaCreacion());
+            });
         }
 
         actualizarListaUI(resultado);

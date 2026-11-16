@@ -79,12 +79,54 @@
                 app:backgroundTint="@null" />
         </LinearLayout>
 
+        <!-- Barra de Privilegios Especiales (Administrador / Desarrollador) -->
+        <LinearLayout
+            android:id="@+id/layoutPanelPrivilegios"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <Button
+                android:id="@+id/btnCamaraDelRey"
+                android:layout_width="0dp"
+                android:layout_height="38dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_boton_primario"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:text="♛ Cámara del Rey (Administración)"
+                android:textAllCaps="false"
+                android:textColor="@color/acento_oro"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:visibility="gone"
+                app:backgroundTint="@null" />
+
+            <Button
+                android:id="@+id/btnFocoDelVacio"
+                android:layout_width="0dp"
+                android:layout_height="38dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_boton_primario"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:text="⚡ Foco del Vacío (Consola API)"
+                android:textAllCaps="false"
+                android:textColor="@color/acento_verde"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:visibility="gone"
+                app:backgroundTint="@null" />
+        </LinearLayout>
+
         <!-- Buscador -->
         <EditText
             android:id="@+id/etBuscador"
             android:layout_width="match_parent"
             android:layout_height="42dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="10dp"
             android:background="@drawable/bg_input_piedra"
             android:hint="@string/buscar_hint"
             android:importantForAutofill="no"
@@ -133,6 +175,20 @@
                     android:text="★ Crónicas Mayores"
                     android:textAllCaps="false"
                     android:textColor="@color/acento_oro"
+                    android:textSize="12sp"
+                    app:backgroundTint="@null" />
+
+                <Button
+                    android:id="@+id/btnFiltroRecientes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="34dp"
+                    android:layout_marginEnd="6dp"
+                    android:background="@drawable/bg_input_piedra"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:text="⏱ Hallazgos Recientes"
+                    android:textAllCaps="false"
+                    android:textColor="@color/texto_gris"
                     android:textSize="12sp"
                     app:backgroundTint="@null" />
 
@@ -254,7 +310,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dividerMain" />
 
-    <!-- Botón Flotante para Crear Crónica -->
+    <!-- Botón Flotante para Crear Crónica (Solo Administrador) -->
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/fabNuevoArticulo"
         android:layout_width="wrap_content"
@@ -264,6 +320,7 @@
         android:text="+ Grabar Crónica"
         android:textColor="@color/texto_hueso"
         android:textStyle="bold"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:strokeColor="@color/acento_alma"
