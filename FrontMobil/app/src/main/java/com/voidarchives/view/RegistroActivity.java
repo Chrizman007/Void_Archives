@@ -15,6 +15,7 @@ import com.voidarchives.model.AuthResponse;
 import com.voidarchives.model.RegistroRequest;
 import com.voidarchives.network.AuthClient;
 import com.voidarchives.network.RetrofitClient;
+import com.voidarchives.util.WindowInsetsHelper;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -31,6 +32,7 @@ public class RegistroActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
+        WindowInsetsHelper.aplicarMargenesSeguros(this);
 
         etNombreRegistro = findViewById(R.id.etNombreRegistro);
         etCorreoRegistro = findViewById(R.id.etCorreoRegistro);

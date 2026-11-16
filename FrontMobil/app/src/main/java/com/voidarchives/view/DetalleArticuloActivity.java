@@ -27,6 +27,7 @@ import com.voidarchives.network.ArticuloClient;
 import com.voidarchives.network.ComentarioClient;
 import com.voidarchives.network.RetrofitClient;
 import com.voidarchives.util.SessionManager;
+import com.voidarchives.util.WindowInsetsHelper;
 
 import java.util.ArrayList;
 
@@ -59,6 +60,7 @@ public class DetalleArticuloActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalle_articulo);
+        WindowInsetsHelper.aplicarMargenesSeguros(this);
 
         sessionManager = new SessionManager(this);
         articulo = (ArticuloDTO) getIntent().getSerializableExtra(EXTRA_ARTICULO);

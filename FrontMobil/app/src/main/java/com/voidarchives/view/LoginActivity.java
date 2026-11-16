@@ -22,6 +22,7 @@ import com.voidarchives.model.LoginRequest;
 import com.voidarchives.network.AuthClient;
 import com.voidarchives.network.RetrofitClient;
 import com.voidarchives.util.SessionManager;
+import com.voidarchives.util.WindowInsetsHelper;
 
 import java.net.ConnectException;
 
@@ -50,6 +51,7 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         setContentView(R.layout.activity_login);
+        WindowInsetsHelper.aplicarMargenesSeguros(this);
 
         etCorreo = findViewById(R.id.etCorreo);
         etPassword = findViewById(R.id.etPassword);

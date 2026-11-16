@@ -23,3 +23,6 @@ Void_Archives/
 - **`v1.1.0`**: Refactorización de los microservicios (`articulos`, `usuarios`, `comentarios`) en arquitectura limpia por capas (`dominio`, `infraestructura`, `negocios`) y transición a *Void Archives*.
 - **`v1.2.0`**: Implementación del cliente móvil nativo en Android Studio (`FrontMobil`) con Java, Retrofit 2, Gson y Glide.
 - **`v1.2.1`**: Integración de selector de imágenes desde la galería del dispositivo, filtrado de crónicas publicadas y respaldo automático de conexión USB/Wi-Fi.
+- **`v1.3.0`**: Implementación de la vista de Administrador (*Cámara del Rey*) con indicadores KPI interactivos, buscador de inspección y archivado/restauración de crónicas.
+- **`v1.4.0`**: Implementación de la consola de diagnóstico de red para Desarrollador (*Foco del Vacío*) y control de privilegios por rol (`lector`, `administrador`, `desarrollador`).
+- **`v1.4.1`**: Ajuste de márgenes seguros (*Safe Area / WindowInsets*) para barra de estado, recorte de cámara y navegación en dispositivos con Android 15+.

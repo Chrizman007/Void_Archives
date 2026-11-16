@@ -35,6 +35,7 @@ import com.voidarchives.model.ImagenUploadRequest;
 import com.voidarchives.network.ArticuloClient;
 import com.voidarchives.network.RetrofitClient;
 import com.voidarchives.util.SessionManager;
+import com.voidarchives.util.WindowInsetsHelper;
 
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
@@ -86,6 +87,7 @@ public class NuevoArticuloActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nuevo_articulo);
+        WindowInsetsHelper.aplicarMargenesSeguros(this);
 
         sessionManager = new SessionManager(this);
         articuloEditar = (ArticuloDTO) getIntent().getSerializableExtra(EXTRA_ARTICULO_EDITAR);
