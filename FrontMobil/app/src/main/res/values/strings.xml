@@ -8,4 +8,8 @@
     <string name="link_registro">¿Primera vez aquí? Forjar nuevo sello</string>
     <string name="buscar_hint">Consultar el Diario del Cazador…</string>
     <string name="sin_articulos">No se encontraron crónicas inscritas en el Diario.</string>
+    <string name="admin_titulo">CÁMARA DEL REY</string>
+    <string name="admin_subtitulo">CONTROL DE CRÓNICAS</string>
+    <string name="dev_titulo">FOCO DEL VACÍO (API)</string>
+    <string name="dev_subtitulo">Terminal de Diagnóstico de Red - Protocolo gRPC/REST</string>
 </resources>

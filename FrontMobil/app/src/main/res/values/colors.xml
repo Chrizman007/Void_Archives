@@ -13,8 +13,16 @@
     <color name="texto_gris">#8C93A8</color>
     <color name="acento_alma">#8AB4F8</color>
     <color name="acento_oro">#E0C068</color>
+    <color name="acento_infeccion">#FF9E40</color>
+    <color name="acento_vacio">#7A8299</color>
     <color name="boton_fondo">#2B3B5E</color>
     <color name="boton_hover">#3C5587</color>
     <color name="acento_rojo">#E65F5F</color>
     <color name="acento_verde">#6EEBC8</color>
+
+    <!-- Paleta Terminal de Diagnóstico (Desarrollador) -->
+    <color name="dev_fondo_principal">#141416</color>
+    <color name="dev_panel_secundario">#1E1E23</color>
+    <color name="dev_acento_naranja">#FF6E40</color>
+    <color name="dev_texto_terminal">#00FF64</color>
 </resources>
